@@ -10,16 +10,9 @@ spec:
     name     : in-cluster
     namespace: app
   source:
-    path   : "HelmCharts/Development"
     repoURL: "git@github.com:jakkaru-devops/inf-argocd.git"
+    path   : "HelmCharts/Development"
     targetRevision: HEAD
-    # helm:
-    #   valueFiles:
-    #   - values_dev.yaml
-    #   parameters:
-    #   - name: "container.image"
-    #     value: adv4000/app1:v3
-
   project: default
   syncPolicy:
     automated:
