@@ -15,9 +15,9 @@ api:
   version: v1.0
   components: backend
   port: 3000
-  replicas: 1
+  replicas: 2
   limits:
-    memory: "500Mi"
+    memory: "256Mi"
     cpu: "200m"
   envs:
     - DATABASE_URL
