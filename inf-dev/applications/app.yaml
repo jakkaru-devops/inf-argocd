@@ -10,8 +10,8 @@ spec:
     name     : in-cluster
     namespace: app
   source:
-    repoURL: "git@github.com:jakkaru-devops/inf-argocd.git"
-    path   : "HelmCharts/Development"
+    repoURL: git@github.com:jakkaru-devops/inf-argocd.git
+    path   : HelmCharts/Development
     targetRevision: HEAD
   project: default
   syncPolicy:
