@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name     : my-app
+  name     : fullstack-short-service
   namespace: argocd-inf
   finalizers:
   - resources-finalizer.argocd.argoproj.io
