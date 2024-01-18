@@ -4,10 +4,10 @@ app:
   version: v1.4
   components: frontend
   port: 80
-  replicas: 1
+  replicas: 2
   limits:
-    memory: "128Mi"
-    cpu: "100m"
+    memory: "256Mi"
+    cpu: "300m"
 
 api:
   name: short-api
@@ -15,7 +15,7 @@ api:
   version: v1.0
   components: backend
   port: 3000
-  replicas: 1
+  replicas: 2
   limits:
     memory: "500Mi"
     cpu: "200m"
