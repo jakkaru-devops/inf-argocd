@@ -4,7 +4,7 @@ app:
   version: v1.4
   components: frontend
   port: 80
-  replicas: 1
+  replicas: 3
   limits:
     memory: "128Mi"
     cpu: "100m"
@@ -17,7 +17,7 @@ api:
   port: 3000
   replicas: 1
   limits:
-    memory: "500Mi"
+    memory: "256Mi"
     cpu: "200m"
   envs:
     - DATABASE_URL
