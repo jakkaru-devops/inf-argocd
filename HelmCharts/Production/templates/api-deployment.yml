@@ -22,14 +22,8 @@ spec:
           env:
             {{- range .Values.api.envs }}
             {{- $data := dict "name" $.Values.api.name "env" . }}
-            {{- include "env.template" $data | indent 12 }}
+            {{- include "env.template" $data | indent 14 }}
             {{- end }}
-          livenessProbe:
-            exec:
-              command:
-                - curl
-                - --fail
-                - http://localhost:3000/api
-            initialDelaySeconds: 90
-            periodSeconds: 5
-            failureThreshold: 1
+      nodeSelector:
+        typeNode: stateless
+         

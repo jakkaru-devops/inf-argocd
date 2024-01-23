@@ -28,7 +28,9 @@ spec:
             - name: "{{ .Values.postgres.name }}-data"
               mountPath: /var/lib/postgresql/data
               subPath: postgres
+      nodeSelector:
+        typeNode: statefull
       volumes:
         - name: "{{ .Values.postgres.name }}-data"
           persistentVolumeClaim:
-            claimName: {{ .Values.postgres.name }}-pvc-best
+            claimName: {{ .Values.postgres.name }}-pvc

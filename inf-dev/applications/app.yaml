@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     name     : in-cluster
-    namespace: app
+    namespace: inf-application-dev
   source:
     repoURL: git@github.com:jakkaru-devops/inf-argocd.git
     path   : HelmCharts/Development

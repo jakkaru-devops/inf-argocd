@@ -17,5 +17,12 @@ spec:
           image: "{{ .Values.app.image }}:{{ .Values.app.version }}"
           ports:
             - containerPort: {{ .Values.app.port }}
+          env:
+              {{- range .Values.app.envs }}
+              {{- $data := dict "name" $.Values.app.name "env" . }}
+              {{- include "env.template" $data | indent 14 }}
+              {{- end }}
           resources:
-            limits: {{ .Values.app.limits | toYaml | nindent 14 }}
+            limits: {{ .Values.app.limits | toYaml | nindent 15 }}
+      nodeSelector:
+        typeNode: stateless

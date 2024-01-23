@@ -3,24 +3,31 @@ kind: Ingress
 metadata:
   name: myingress
   annotations:
-    nginx.ingress.kubernetes.io/add-base-url: "true"
+      nginx.ingress.kubernetes.io/base-url: "true"
 spec:
   ingressClassName: nginx
   rules:
-    - host: demo.test
-      http:
-        paths:
-          - pathType: Prefix
-            path: "/"
-            backend:
-              service:
-                name: {{ .Values.app.name }}-clusterip
-                port:
-                  number: {{ .Values.app.port }}
-          - pathType: Prefix
-            path: "/api"
-            backend:
-              service:
-                name: {{ .Values.api.name }}-clusterip
-                port:
-                  number: {{ .Values.api.port }}
+  - host: infinitum.test
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: {{ .Values.app.name }}-clusterip
+            port: 
+              number: {{ .Values.app.port }}
+      - pathType: Prefix
+        path: "/api"
+        backend:
+          service:
+            name: {{ .Values.api.name }}-clusterip
+            port:
+              number: {{ .Values.api.port }}
+      - pathType: Prefix
+        path: "/api/v2"
+        backend:
+          service:
+            name: {{ .Values.api.name }}-clusterip
+            port:
+              number: {{ .Values.api.port }}
