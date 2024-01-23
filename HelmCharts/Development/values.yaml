@@ -4,7 +4,7 @@ app:
   version: 1.6
   components: frontend
   port: 3000
-  replicas: 1
+  replicas: 2
   limits:
     memory: "600Mi"
     cpu: "500m"
@@ -19,7 +19,7 @@ api:
   version: 1.4
   components: backend
   port: 2348
-  replicas: 1
+  replicas: 2
   limits:
     memory: "600Mi"
     cpu: "400m"
