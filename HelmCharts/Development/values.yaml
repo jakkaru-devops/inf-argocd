@@ -1,4 +1,4 @@
-test: $IMAGE_TAG
+test: 2
 
 
 app:
