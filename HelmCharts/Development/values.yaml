@@ -4,7 +4,7 @@ test: 333
 app:
   name: inf-app
   image: cr.yandex/crpn9ikb6hp5v19o9957/inf-frontend-dev
-  version: 1.6
+  version: 333
   components: frontend
   port: 3000
   replicas: 1
@@ -19,7 +19,7 @@ app:
 api:
   name: inf-api
   image: cr.yandex/crpn9ikb6hp5v19o9957/inf-backend-dev
-  version: 1.4
+  version: 333
   components: backend
   port: 2348
   replicas: 1
@@ -35,7 +35,7 @@ api:
 postgres:
   name: postgres
   image: postgres
-  version: 14
+  version: 333
   replicas: 1
   components: postgres
   port: 5432
@@ -50,7 +50,7 @@ postgres:
 redis:
   name: redis
   image: redis
-  version: 7.0.7
+  version: 333
   replicas: 1
   components: redis
   port: 6379
