@@ -13,6 +13,14 @@ spec:
     repoURL: git@github.com:jakkaru-devops/inf-argocd.git
     path   : HelmCharts/Development
     targetRevision: HEAD
+    helm:
+      valueFiles:
+      - values.yaml
+      parameters:
+      - name: "app.version"
+        value: d345f43355c71033e4a46d435a4cab76b76a9cfb
+      - name: "api.version"
+        value: ec1d8da9d1fae61692d750d1234f4fa7dc44044f
   project: default
   syncPolicy:
     automated:
