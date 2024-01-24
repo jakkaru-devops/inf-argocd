@@ -1,2 +1,61 @@
 app:
-  version: "2222"
+  name: inf-app
+  image: cr.yandex/crpn9ikb6hp5v19o9957/inf-frontend-dev
+  version: 1.6
+  components: frontend
+  port: 3000
+  replicas: 1
+  limits:
+    memory: "600Mi"
+    cpu: "500m"
+  envs:
+    - EXTERNAL_CATALOG_SERVER_URL
+    - API_SERVER_URL
+
+
+api:
+  name: inf-api
+  image: cr.yandex/crpn9ikb6hp5v19o9957/inf-backend-dev
+  version: 1.4
+  components: backend
+  port: 2348
+  replicas: 1
+  limits:
+    memory: "600Mi"
+    cpu: "400m"
+  envs:
+    - CLIENT_URL
+    - DB_PORT
+    - DB_HOST
+    - REDIS_URL
+
+postgres:
+  name: postgres
+  image: postgres
+  version: 14
+  replicas: 1
+  components: postgres
+  port: 5432
+  limits:
+    memory: "1000Mi"
+    cpu: "500m"
+  envs:
+    - POSTGRES_DB
+    - POSTGRES_USER
+    - POSTGRES_PASSWORD
+
+redis:
+  name: redis
+  image: redis
+  version: 7.0.7
+  replicas: 1
+  components: redis
+  port: 6379
+  limits:
+    memory: "500Mi"
+    cpu: "300m"
+
+database:
+  db: inf
+  user: postgres
+  password: postgres
