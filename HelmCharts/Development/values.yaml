@@ -4,7 +4,7 @@ app:
   version: "2.1"
   components: frontend
   port: 3000
-  replicas: 1
+  replicas: 2
   limits:
     memory: "600Mi"
     cpu: "500m"
