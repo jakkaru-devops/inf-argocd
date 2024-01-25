@@ -4,7 +4,7 @@ app:
   version: 2
   components: frontend
   port: 3000
-  replicas: 1
+  replicas: 1.6
   limits:
     memory: "600Mi"
     cpu: "500m"
@@ -14,7 +14,7 @@ app:
 api:
   name: inf-api
   image: cr.yandex/crpn9ikb6hp5v19o9957/inf-backend-dev
-  version: 2.0
+  version: 1.4
   components: backend
   port: 2348
   replicas: 1
