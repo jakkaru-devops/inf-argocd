@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name     : fullstack-short-service
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    name     : in-cluster
+    namespace: inf-application-prod
+  source:
+    repoURL: git@github.com:jakkaru-devops/inf-argocd.git
+    path   : HelmCharts/Production
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+      prune   : true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    
+   
