@@ -6,7 +6,7 @@ app:
   port: 3000
   replicas: 2
   limits:
-    memory: "600Mi"
+    memory: "750Mi"
     cpu: "500m"
   envs:
     - EXTERNAL_CATALOG_SERVER_URL
@@ -17,10 +17,10 @@ api:
   version: 3
   components: backend
   port: 2348
-  replicas: 1
+  replicas: 2
   limits:
-    memory: "600Mi"
-    cpu: "400m"
+    memory: "750Mi"
+    cpu: "500m"
   envs:
     - CLIENT_URL
     - DB_PORT
