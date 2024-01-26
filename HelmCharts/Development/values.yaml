@@ -30,7 +30,7 @@ postgres:
   name: postgres
   image: postgres
   version: 14
-  replicas: 3
+  replicas: 1
   components: postgres
   port: 5432
   limits:
