@@ -4,7 +4,7 @@ app:
   version: 3
   components: frontend
   port: 3000
-  replicas: 3
+  replicas: 1
   limits:
     memory: "750Mi"
     cpu: "500m"
@@ -17,7 +17,7 @@ api:
   version: 3
   components: backend
   port: 2348
-  replicas: 2
+  replicas: 1
   limits:
     memory: "750Mi"
     cpu: "500m"
@@ -44,7 +44,7 @@ redis:
   name: redis
   image: redis
   version: 7.0.7
-  replicas: 2
+  replicas: 1
   components: redis
   port: 6379
   limits:
