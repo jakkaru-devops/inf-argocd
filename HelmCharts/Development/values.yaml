@@ -1,7 +1,7 @@
 app:
   name: inf-app
   image: cr.yandex/crpn9ikb6hp5v19o9957/inf-frontend-dev
-  version: 1.2312
+  version: "ad123w"
   components: frontend
   port: 3000
   replicas: 1
