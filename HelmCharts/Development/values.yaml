@@ -1,7 +1,7 @@
 app:
   name: inf-app
   image: cr.yandex/crpn9ikb6hp5v19o9957/inf-frontend-dev
-  version: "ffcc4e"
+  version: "3"
   components: frontend
   port: 3000
   replicas: 1
@@ -14,7 +14,7 @@ app:
 api:
   name: inf-api
   image: cr.yandex/crpn9ikb6hp5v19o9957/inf-backend-dev
-  version: "378949"
+  version: "3"
   components: backend
   port: 2348
   replicas: 1
