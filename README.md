@@ -3,7 +3,7 @@ ArgoCD Applications per EKS Cluster
 Name of the folder represent name of the EKS Cluster (Except HelmCharts).
 
 │
-├── HelmCharts             # All Helm Charts asdsad
+├── HelmCharts             # All Helm Charts asdsadsdfds
 │   ├── ChartTest1
 │   │   ├── Chart.yaml
 │   │   ├── templates
