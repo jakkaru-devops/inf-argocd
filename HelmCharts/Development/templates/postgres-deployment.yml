@@ -18,10 +18,21 @@ spec:
           ports:
             - containerPort: {{ .Values.postgres.port }}
           env:
-            {{- range .Values.postgres.envs }}
-            {{- $data := dict "name" $.Values.postgres.name "env" . }}
-            {{- include "env.template" $data | indent 14 }}
-            {{- end }}
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: "k8s-secret-postgres"
+                  key: POSTGRES_DB
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: "k8s-secret-postgres"
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: "k8s-secret-postgres"
+                  key: POSTGRES_PASSWORD
           resources:
             limits: {{ .Values.postgres.limits | toYaml | nindent 14 }}
           volumeMounts:

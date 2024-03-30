@@ -1,31 +1,73 @@
+pgdumper:
+  name: pg-dumper
+  image: cr.yandex/crp86m314psunr7fn694/pgbackup
+  version: 1
+  envs:
+    - PG_HOST
+    - PG_PASSWORD
+    - PG_USER
+    - PG_DATABASE
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+    - AWS_BUCKET_NAME
+    - AWS_HOST
+    - AWS_PORT
+
+
+pgrestore:
+  name: pg-restore
+  image: cr.yandex/crp86m314psunr7fn694/pgrestore
+  version: 1
+  envs:
+    - PG_HOST
+    - PG_PASSWORD
+    - PG_USER
+    - PG_DATABASE
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+    - AWS_BUCKET_NAME
+    - AWS_HOST
+    - AWS_PORT
+
+
+
 app:
   name: inf-app
-  image: cr.yandex/crpn9ikb6hp5v19o9957/inf-frontend-dev
-  version: "3"
+  image: cr.yandex/crp86m314psunr7fn694/inf-frontend-dev
+  version: e53ac8
   components: frontend
   port: 3000
   replicas: 1
+  requests:
+    cpu: "1000m"
+    memory: "1000Mi"
   limits:
-    memory: "750Mi"
-    cpu: "500m"
+    cpu: "1000m"
+    memory: "1000Mi"
   envs:
     - EXTERNAL_CATALOG_SERVER_URL
     - API_SERVER_URL
+
+
 api:
   name: inf-api
-  image: cr.yandex/crpn9ikb6hp5v19o9957/inf-backend-dev
-  version: "3"
+  image: cr.yandex/crp86m314psunr7fn694/inf-backend-dev
+  version: 0d7aa5
   components: backend
   port: 2348
   replicas: 1
+  requests:
+    cpu: "1500m"
+    memory: "2500Mi"
   limits:
-    memory: "750Mi"
-    cpu: "500m"
+    cpu: "1500m"
+    memory: "2500Mi"
   envs:
     - CLIENT_URL
     - DB_PORT
     - DB_HOST
     - REDIS_URL
+
 postgres:
   name: postgres
   image: postgres
@@ -33,13 +75,17 @@ postgres:
   replicas: 1
   components: postgres
   port: 5432
+  requests:
+    cpu: "2000m"
+    memory: "6000Mi"
   limits:
-    memory: "1000Mi"
-    cpu: "500m"
+    cpu: "2000m"
+    memory: "6000Mi"
   envs:
     - POSTGRES_DB
     - POSTGRES_USER
     - POSTGRES_PASSWORD
+
 redis:
   name: redis
   image: redis
@@ -47,9 +93,13 @@ redis:
   replicas: 1
   components: redis
   port: 6379
+  requests:
+    cpu: "500m"
+    memory: "750Mi"
   limits:
-    memory: "500Mi"
-    cpu: "300m"
+    cpu: "500m"
+    memory: "750Mi"
+
 database:
   db: inf
   user: postgres

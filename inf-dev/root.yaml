@@ -10,7 +10,7 @@ spec:
     name     : in-cluster
     namespace: argocd
   source:
-    repoURL: git@github.com:jakkaru-devops/inf-argocd.git
+    repoURL: git@github.com:infmarket/argo-cd.git
     path   : inf-dev/applications
     targetRevision: HEAD
   project: default
@@ -22,4 +22,5 @@ spec:
       - CreateNamespace=true
     
    
-      
+# asdsa
+     

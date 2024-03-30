@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.redis.name }}-config
+  name: "{{ .Values.redis.name }}-config"
 data:
   edis.conf: |-
     bind 0.0.0.0
