@@ -10,7 +10,7 @@ spec:
     name     : in-cluster
     namespace: inf-application-dev
   source:
-    repoURL: git@github.com:infmarket/argo-cd.git
+    repoURL: git@github.com:jakkaru-devops/inf-argocd.git
     path   : HelmCharts/Development
     targetRevision: HEAD
   project: default

@@ -10,7 +10,7 @@ spec:
     name     : in-cluster
     namespace: argocd
   source:
-    repoURL: git@github.com:infmarket/argo-cd.git
+    repoURL: git@github.com:jakkaru-devops/inf-argocd.git
     path   : inf-dev/applications
     targetRevision: HEAD
   project: default
