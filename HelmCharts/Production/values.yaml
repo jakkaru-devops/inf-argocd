@@ -40,10 +40,10 @@ app:
   replicas: 1
   requests:
     cpu: "250m"
-    memory: "500Mi"
+    memory: "250Mi"
   limits:
     cpu: "250m"
-    memory: "500Mi"
+    memory: "250Mi"
   envs:
     - EXTERNAL_CATALOG_SERVER_URL
     - API_SERVER_URL
@@ -58,10 +58,10 @@ api:
   replicas: 1
   requests:
     cpu: "500m"
-    memory: "500Mi"
+    memory: "350Mi"
   limits:
     cpu: "500m"
-    memory: "500Mi"
+    memory: "350Mi"
   envs:
     - CLIENT_URL
     - DB_PORT
