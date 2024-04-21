@@ -39,11 +39,11 @@ app:
   port: 3000
   replicas: 1
   requests:
-    cpu: "1000m"
-    memory: "1000Mi"
+    cpu: "250m"
+    memory: "500Mi"
   limits:
-    cpu: "1000m"
-    memory: "1000Mi"
+    cpu: "250m"
+    memory: "500Mi"
   envs:
     - EXTERNAL_CATALOG_SERVER_URL
     - API_SERVER_URL
@@ -57,11 +57,11 @@ api:
   port: 2348
   replicas: 1
   requests:
-    cpu: "1500m"
-    memory: "2500Mi"
+    cpu: "500m"
+    memory: "500Mi"
   limits:
-    cpu: "1500m"
-    memory: "2500Mi"
+    cpu: "500m"
+    memory: "500Mi"
   envs:
     - CLIENT_URL
     - DB_PORT
@@ -76,11 +76,11 @@ postgres:
   components: postgres
   port: 5432
   requests:
-    cpu: "2000m"
-    memory: "6000Mi"
+    cpu: "800m"
+    memory: "700Mi"
   limits:
-    cpu: "2000m"
-    memory: "6000Mi"
+    cpu: "800m"
+    memory: "700Mi"
   envs:
     - POSTGRES_DB
     - POSTGRES_USER
@@ -94,11 +94,11 @@ redis:
   components: redis
   port: 6379
   requests:
-    cpu: "500m"
-    memory: "750Mi"
+    cpu: "200m"
+    memory: "350Mi"
   limits:
-    cpu: "500m"
-    memory: "750Mi"
+    cpu: "200m"
+    memory: "350Mi"
 
 database:
   db: inf
