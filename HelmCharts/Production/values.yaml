@@ -76,11 +76,11 @@ postgres:
   components: postgres
   port: 5432
   requests:
-    cpu: "800m"
-    memory: "700Mi"
+    cpu: "500m"
+    memory: "500Mi"
   limits:
-    cpu: "800m"
-    memory: "700Mi"
+    cpu: "500m"
+    memory: "500Mi"
   envs:
     - POSTGRES_DB
     - POSTGRES_USER
@@ -95,10 +95,10 @@ redis:
   port: 6379
   requests:
     cpu: "200m"
-    memory: "350Mi"
+    memory: "250Mi"
   limits:
     cpu: "200m"
-    memory: "350Mi"
+    memory: "250Mi"
 
 database:
   db: inf
