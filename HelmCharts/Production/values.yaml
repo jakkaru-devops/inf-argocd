@@ -76,11 +76,11 @@ postgres:
   components: postgres
   port: 5432
   requests:
-    cpu: "500m"
-    memory: "500Mi"
+    cpu: "1000m"
+    memory: "2000Mi"
   limits:
-    cpu: "500m"
-    memory: "500Mi"
+    cpu: "1000m"
+    memory: "2000Mi"
   envs:
     - POSTGRES_DB
     - POSTGRES_USER
@@ -104,4 +104,12 @@ database:
   db: inf
   user: postgres
   password: postgres
+
+vault:
+  secret_id_postgres: "a70bd781-5be0-4637-a533-9d15945f4500"
+  secret_id_api: "2c072098-687a-a053-162f-f8dec1e7e023"
+  secret_id_app: "d51376af-62eb-b25b-f9ff-4034b28d2897"
+  secret_id_s3: "5cecf212-5e9b-fd79-5ccd-310d9a5c181e"
+  all_role_id: "7b6c2012-8089-2bf7-5775-36ab0fdde4ef"
+  server_ip: "http://10.96.253.107:8200"
 
