@@ -12,8 +12,6 @@ pgdumper:
     - AWS_BUCKET_NAME
     - AWS_HOST
     - AWS_PORT
-
-
 pgrestore:
   name: pg-restore
   image: cr.yandex/crpn9ikb6hp5v19o9957/pgrestore
@@ -28,13 +26,10 @@ pgrestore:
     - AWS_BUCKET_NAME
     - AWS_HOST
     - AWS_PORT
-
-
-
 app:
   name: inf-app
   image: cr.yandex/crpn9ikb6hp5v19o9957/inf-frontend-dev
-  version: e9655d
+  version: 810fa8
   components: frontend
   port: 3000
   replicas: 1
@@ -47,8 +42,6 @@ app:
   envs:
     - EXTERNAL_CATALOG_SERVER_URL
     - API_SERVER_URL
-
-
 api:
   name: inf-api
   image: cr.yandex/crpn9ikb6hp5v19o9957/inf-backend-dev
@@ -67,7 +60,6 @@ api:
     - DB_PORT
     - DB_HOST
     - REDIS_URL
-
 postgres:
   name: postgres
   image: postgres
@@ -85,7 +77,6 @@ postgres:
     - POSTGRES_DB
     - POSTGRES_USER
     - POSTGRES_PASSWORD
-
 redis:
   name: redis
   image: redis
@@ -99,12 +90,10 @@ redis:
   limits:
     cpu: "200m"
     memory: "250Mi"
-
 database:
   db: inf
   user: postgres
   password: postgres
-
 vault:
   secret_id_postgres: "a70bd781-5be0-4637-a533-9d15945f4500"
   secret_id_api: "2c072098-687a-a053-162f-f8dec1e7e023"
@@ -112,4 +101,3 @@ vault:
   secret_id_s3: "5cecf212-5e9b-fd79-5ccd-310d9a5c181e"
   all_role_id: "7b6c2012-8089-2bf7-5775-36ab0fdde4ef"
   server_ip: "http://10.96.253.107:8200"
-
