@@ -94,10 +94,11 @@ database:
   db: inf
   user: postgres
   password: postgres
+
 vault:
-  secret_id_postgres: "a70bd781-5be0-4637-a533-9d15945f4500"
-  secret_id_api: "2c072098-687a-a053-162f-f8dec1e7e023"
-  secret_id_app: "d51376af-62eb-b25b-f9ff-4034b28d2897"
-  secret_id_s3: "5cecf212-5e9b-fd79-5ccd-310d9a5c181e"
-  all_role_id: "7b6c2012-8089-2bf7-5775-36ab0fdde4ef"
-  server_ip: "http://10.96.253.107:8200"
+  secret_id_postgres: "8b58dd8f-1d85-484c-83ba-3be9d350c6ba"
+  secret_id_api: "0e366029-4f26-52ef-f57b-46061ee376f2"
+  secret_id_app: "06f60f30-e57d-c1cb-52a6-6801a1d40a54"
+  secret_id_s3: "5e59a09a-df21-190b-5de0-f76c681b2297"
+  all_role_id: "900f481e-180e-7892-53ad-226beb81a0e1"
+  server_ip: "http://10.96.201.249:8200"
