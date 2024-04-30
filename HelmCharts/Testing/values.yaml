@@ -1,0 +1,111 @@
+global:
+  pgdumper:
+    name: pg-dumper
+    image: cr.yandex/crpn9ikb6hp5v19o9957/pgdumper
+    version: 60
+    envs:
+      - PG_HOST
+      - PG_PASSWORD
+      - PG_USER
+      - PG_DATABASE
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_BUCKET_NAME
+      - AWS_HOST
+      - AWS_PORT
+      
+  pgrestore:
+    name: pg-restore
+    image: cr.yandex/crpn9ikb6hp5v19o9957/pgrestore
+    version: 15
+    envs:
+      - PG_HOST
+      - PG_PASSWORD
+      - PG_USER
+      - PG_DATABASE
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_BUCKET_NAME
+      - AWS_HOST
+      - AWS_PORT
+
+  app:
+    name: inf-app
+    image: cr.yandex/crpn9ikb6hp5v19o9957/inf-frontend-dev
+    version: 810fa8
+    components: frontend
+    port: 3000
+    replicas: 1
+    requests:
+      cpu: "250m"
+      memory: "250Mi"
+    limits:
+      cpu: "250m"
+      memory: "250Mi"
+    envs:
+      - EXTERNAL_CATALOG_SERVER_URL
+      - API_SERVER_URL
+      
+  api:
+    name: inf-api
+    image: cr.yandex/crpn9ikb6hp5v19o9957/inf-backend-dev
+    version: 6ade93
+    components: backend
+    port: 2348
+    replicas: 1
+    requests:
+      cpu: "500m"
+      memory: "350Mi"
+    limits:
+      cpu: "500m"
+      memory: "350Mi"
+    envs:
+      - CLIENT_URL
+      - DB_PORT
+      - DB_HOST
+      - REDIS_URL
+
+  postgres:
+    name: postgres
+    image: postgres
+    version: 14
+    replicas: 1
+    components: postgres
+    port: 5432
+    requests:
+      cpu: "1000m"
+      memory: "2000Mi"
+    limits:
+      cpu: "1000m"
+      memory: "2000Mi"
+    envs:
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+
+  redis:
+    name: redis
+    image: redis
+    version: 7.0.7
+    replicas: 1
+    components: redis
+    port: 6379
+    requests:
+      cpu: "200m"
+      memory: "250Mi"
+    limits:
+      cpu: "200m"
+      memory: "250Mi"
+
+  database:
+    db: inf
+    user: postgres
+    password: postgres
+
+  vault:
+    secret_id_postgres: "dab93c0a-3e96-b393-3085-843068c54e92"
+    secret_id_api: "56ec246c-6260-8758-3d3c-c2146101f439"
+    secret_id_app: "b544cf5c-02b2-4dad-461d-fcca89d69767"
+    secret_id_s3: "b878cb6a-fd35-cf77-5d3a-e423a7aec65f"
+    all_role_id: "60346035-c299-a2bd-8880-1ee834a9d03a"
+    server_ip: "http://10.96.239.130:8200"

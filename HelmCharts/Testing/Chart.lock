@@ -1,0 +1,21 @@
+dependencies:
+- name: api
+  repository: file:///home/sava/inf-devops/dev/inf-argocd/HelmCharts/Testing/charts/api
+  version: 0.1.0
+- name: app
+  repository: file:///home/sava/inf-devops/dev/inf-argocd/HelmCharts/Testing/charts/app
+  version: 0.1.0
+- name: postgres
+  repository: file:///home/sava/inf-devops/dev/inf-argocd/HelmCharts/Testing/charts/postgres
+  version: 0.1.0
+- name: redis
+  repository: file:///home/sava/inf-devops/dev/inf-argocd/HelmCharts/Testing/charts/redis
+  version: 0.1.0
+- name: pg-restore
+  repository: file:///home/sava/inf-devops/dev/inf-argocd/HelmCharts/Testing/charts/pg-restore
+  version: 0.1.0
+- name: pg-dumper
+  repository: file:///home/sava/inf-devops/dev/inf-argocd/HelmCharts/Testing/charts/pg-dumper
+  version: 0.1.0
+digest: sha256:c80a3af2ca216625eb4b3ce191a6a7f8c498b553773152bae89950206cfb6e9e
+generated: "2024-04-30T03:54:06.072780368+03:00"

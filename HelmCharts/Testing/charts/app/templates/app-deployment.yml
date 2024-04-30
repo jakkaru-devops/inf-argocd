@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.global.app.name }}-deployment"
+spec:
+  replicas: {{ .Values.global.app.replicas }}
+  selector:
+    matchLabels:
+      components: {{ .Values.global.app.components }}
+  template:
+    metadata:
+      labels:
+        components: {{ .Values.global.app.components }}
+    spec:
+      containers:
+        - name: {{ .Values.global.app.name }}
+          image: "{{ .Values.global.app.image }}:{{ .Values.global.app.version }}"
+          ports:
+            - containerPort: {{ .Values.global.app.port }}
+          env:
+            - name: API_SERVER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: "app-secret"
+                  key: API_SERVER_URL
+            - name: EXTERNAL_CATALOG_SERVER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: "app-secret"
+                  key: EXTERNAL_CATALOG_SERVER_URL
+          resources:
+            requests: {{ .Values.global.app.requests | toYaml | nindent 14 }}
+            limits: {{ .Values.global.app.limits | toYaml | nindent 14 }}
+      nodeSelector:
+        typeNode: stateless
