@@ -21,7 +21,7 @@ spec:
           image: busybox
           command: ["sleep", "100"]  # Эта команда позволяет контейнеру ожидать 300 секунд (5 минут)
       containers:
-        - name: {{ .Values.api.name }}
+        - name: {{ .Values.global.api.name }}
           image: "{{ .Values.global.api.image }}:{{ .Values.global.api.version }}"
           ports:
             - containerPort: {{ .Values.global.api.port }}

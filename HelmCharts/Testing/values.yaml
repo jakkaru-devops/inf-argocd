@@ -13,7 +13,6 @@ global:
       - AWS_BUCKET_NAME
       - AWS_HOST
       - AWS_PORT
-      
   pgrestore:
     name: pg-restore
     image: cr.yandex/crpn9ikb6hp5v19o9957/pgrestore
@@ -28,7 +27,6 @@ global:
       - AWS_BUCKET_NAME
       - AWS_HOST
       - AWS_PORT
-
   app:
     name: inf-app
     image: cr.yandex/crpn9ikb6hp5v19o9957/inf-frontend-dev
@@ -45,7 +43,6 @@ global:
     envs:
       - EXTERNAL_CATALOG_SERVER_URL
       - API_SERVER_URL
-      
   api:
     name: inf-api
     image: cr.yandex/crpn9ikb6hp5v19o9957/inf-backend-dev
@@ -64,7 +61,6 @@ global:
       - DB_PORT
       - DB_HOST
       - REDIS_URL
-
   postgres:
     name: postgres
     image: postgres
@@ -82,7 +78,6 @@ global:
       - POSTGRES_DB
       - POSTGRES_USER
       - POSTGRES_PASSWORD
-
   redis:
     name: redis
     image: redis
@@ -96,12 +91,10 @@ global:
     limits:
       cpu: "200m"
       memory: "250Mi"
-
   database:
     db: inf
     user: postgres
     password: postgres
-
   vault:
     secret_id_postgres: "dab93c0a-3e96-b393-3085-843068c54e92"
     secret_id_api: "56ec246c-6260-8758-3d3c-c2146101f439"
