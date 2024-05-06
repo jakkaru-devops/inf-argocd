@@ -96,9 +96,9 @@ global:
     user: postgres
     password: postgres
   vault:
-    secret_id_postgres: "dab93c0a-3e96-b393-3085-843068c54e92"
-    secret_id_api: "56ec246c-6260-8758-3d3c-c2146101f439"
-    secret_id_app: "b544cf5c-02b2-4dad-461d-fcca89d69767"
-    secret_id_s3: "b878cb6a-fd35-cf77-5d3a-e423a7aec65f"
-    all_role_id: "60346035-c299-a2bd-8880-1ee834a9d03a"
-    server_ip: "http://10.96.239.130:8200"
+    secret_id_postgres: "0b53e1b6-ffc1-061d-46ca-150c801d515e"
+    secret_id_api: "91a40689-951f-9ef9-106a-130fb0a5d419"
+    secret_id_app: "2e795ded-341d-2841-aa7a-aed0d0a81455"
+    secret_id_s3: "0f211ce6-3271-13f4-28a4-ac1d35d3c10b"
+    all_role_id: "ed0f8887-029b-d21d-2607-348a867807c4"
+    server_ip: "http://10.96.171.186:8200"
