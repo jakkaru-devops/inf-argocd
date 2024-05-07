@@ -69,11 +69,11 @@ global:
     components: postgres
     port: 5432
     requests:
-      cpu: "1000m"
-      memory: "2000Mi"
+      cpu: "500m"
+      memory: "500Mi"
     limits:
-      cpu: "1000m"
-      memory: "2000Mi"
+      cpu: "500m"
+      memory: "500Mi"
     envs:
       - POSTGRES_DB
       - POSTGRES_USER
