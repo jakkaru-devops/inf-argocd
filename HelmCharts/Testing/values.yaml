@@ -101,4 +101,4 @@ global:
     secret_id_postgres: "8007e258-954e-df34-1250-6f8ce0ce1042"
     secret_id_s3: "d5d679f5-2c39-3b10-d3b3-d332333aa70f"
     all_role_id: "05af98a1-7c3f-61bb-6831-8b108816a679"
-    server_ip: "http://10.96.166.114:8200"
+    server_ip: "http://10.96.245.10:8200"
