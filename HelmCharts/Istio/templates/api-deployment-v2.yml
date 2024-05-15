@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.api.name }}-deployment-v2"
+  labels:
+    app: {{ .Values.api.name }}
+    version: v2
+spec:
+  replicas: {{ .Values.api.replicas }}
+  selector:
+    matchLabels:
+      components: {{ .Values.api.components }}
+      app: {{ .Values.api.name }}
+      version: v2
+  template:
+    metadata:
+      labels:
+        components: {{ .Values.api.components }}
+        app: {{ .Values.api.name }}
+        version: v2
+        sidecar.istio.io/inject: "false"
+    spec:
+      initContainers:
+        - name: wait-container
+          image: busybox
+          command: ["sleep", "100"]  # Эта команда позволяет контейнеру ожидать 300 секунд (5 минут)
+      containers:
+        - name: {{ .Values.api.name }}
+          image: "{{ .Values.api.image }}:{{ .Values.api.version }}"
+          ports:
+            - containerPort: {{ .Values.api.port }}
+          resources:
+            requests: {{ .Values.api.requests | toYaml | nindent 14 }}
+            limits: {{ .Values.api.limits | toYaml | nindent 14 }}
+          env:
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: "api-secret"
+                  key: DB_PORT
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: "api-secret"
+                  key: DB_HOST
+            - name: CLIENT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: "api-secret"
+                  key: CLIENT_URL
+            - name: REDIS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: "api-secret"
+                  key: REDIS_URL
+      nodeSelector:
+        typeNode: stateless

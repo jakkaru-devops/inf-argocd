@@ -1,0 +1,110 @@
+pgdumper:
+  name: pg-dumper
+  image: cr.yandex/crpn9ikb6hp5v19o9957/pgdumper
+  version: 60
+  envs:
+    - PG_HOST
+    - PG_PASSWORD
+    - PG_USER
+    - PG_DATABASE
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+    - AWS_BUCKET_NAME
+    - AWS_HOST
+    - AWS_PORT
+
+pgrestore:
+  name: pg-restore
+  image: cr.yandex/crpn9ikb6hp5v19o9957/pgrestore
+  version: 15
+  envs:
+    - PG_HOST
+    - PG_PASSWORD
+    - PG_USER
+    - PG_DATABASE
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+    - AWS_BUCKET_NAME
+    - AWS_HOST
+    - AWS_PORT
+
+app:
+  name: inf-app
+  image: cr.yandex/crpn9ikb6hp5v19o9957/inf-frontend-dev
+  version: 810fa8
+  components: frontend
+  port: 3000
+  replicas: 1
+  requests:
+    cpu: "400m"
+    memory: "400Mi"
+  limits:
+    cpu: "400m"
+    memory: "400Mi"
+  envs:
+    - EXTERNAL_CATALOG_SERVER_URL
+    - API_SERVER_URL
+
+api:
+  name: inf-api
+  image: cr.yandex/crpn9ikb6hp5v19o9957/inf-backend-dev
+  version: 6ade93
+  components: backend
+  port: 2348
+  replicas: 1
+  requests:
+    cpu: "400m"
+    memory: "400Mi"
+  limits:
+    cpu: "400m"
+    memory: "400Mi"
+  envs:
+    - CLIENT_URL
+    - DB_PORT
+    - DB_HOST
+    - REDIS_URL
+
+postgres:
+  name: postgres
+  image: postgres
+  version: 14
+  replicas: 1
+  components: postgres
+  port: 5432
+  requests:
+    cpu: "750m"
+    memory: "7500Mi"
+  limits:
+    cpu: "750m"
+    memory: "750Mi"
+  envs:
+    - POSTGRES_DB
+    - POSTGRES_USER
+    - POSTGRES_PASSWORD
+
+redis:
+  name: redis
+  image: redis
+  version: 7.0.7
+  replicas: 1
+  components: redis
+  port: 6379
+  requests:
+    cpu: "200m"
+    memory: "250Mi"
+  limits:
+    cpu: "200m"
+    memory: "250Mi"
+    
+database:
+  db: inf
+  user: postgres
+  password: postgres
+
+vault:
+  secret_id_app: "457c11a8-13b5-c992-6814-3c728da4c3e4"
+  secret_id_api: "868dd1e3-7fa0-e542-a0fd-b10d6cc24c38"
+  secret_id_postgres: "af20e81d-1027-023d-6f1f-58273336aaeb"
+  secret_id_s3: "8c292d27-da11-4e57-1a77-c506a84060fe"
+  all_role_id: "ab22437b-f986-9fc5-aba2-2e978bafb389"
+  server_ip: "http://10.96.209.145:8200"

@@ -1,0 +1,104 @@
+global:
+  pgdumper:
+    name: pg-dumper
+    image: cr.yandex/crpn9ikb6hp5v19o9957/pgdumper
+    version: 60
+    envs:
+      - PG_HOST
+      - PG_PASSWORD
+      - PG_USER
+      - PG_DATABASE
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_BUCKET_NAME
+      - AWS_HOST
+      - AWS_PORT
+  pgrestore:
+    name: pg-restore
+    image: cr.yandex/crpn9ikb6hp5v19o9957/pgrestore
+    version: 15
+    envs:
+      - PG_HOST
+      - PG_PASSWORD
+      - PG_USER
+      - PG_DATABASE
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_BUCKET_NAME
+      - AWS_HOST
+      - AWS_PORT
+  app:
+    name: inf-app
+    image: cr.yandex/crpn9ikb6hp5v19o9957/inf-frontend-dev
+    version: 810fa8
+    components: frontend
+    port: 3000
+    replicas: 1
+    requests:
+      cpu: "250m"
+      memory: "250Mi"
+    limits:
+      cpu: "250m"
+      memory: "250Mi"
+    envs:
+      - EXTERNAL_CATALOG_SERVER_URL
+      - API_SERVER_URL
+  api:
+    name: inf-api
+    image: cr.yandex/crpn9ikb6hp5v19o9957/inf-backend-dev
+    version: 6ade93
+    components: backend
+    port: 2348
+    replicas: 1
+    requests:
+      cpu: "500m"
+      memory: "350Mi"
+    limits:
+      cpu: "500m"
+      memory: "350Mi"
+    envs:
+      - CLIENT_URL
+      - DB_PORT
+      - DB_HOST
+      - REDIS_URL
+  postgres:
+    name: postgres
+    image: postgres
+    version: 14
+    replicas: 1
+    components: postgres
+    port: 5432
+    requests:
+      cpu: "500m"
+      memory: "500Mi"
+    limits:
+      cpu: "500m"
+      memory: "500Mi"
+    envs:
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+  redis:
+    name: redis
+    image: redis
+    version: 7.0.7
+    replicas: 1
+    components: redis
+    port: 6379
+    requests:
+      cpu: "200m"
+      memory: "250Mi"
+    limits:
+      cpu: "200m"
+      memory: "250Mi"
+  database:
+    db: inf
+    user: postgres
+    password: postgres
+  vault:
+    secret_id_app: "a8fe1db9-b520-17cc-5121-0c675338ad59"
+    secret_id_api: "eab3c6c3-6fc9-f131-afa7-89493b28ea29"
+    secret_id_postgres: "8007e258-954e-df34-1250-6f8ce0ce1042"
+    secret_id_s3: "d5d679f5-2c39-3b10-d3b3-d332333aa70f"
+    all_role_id: "05af98a1-7c3f-61bb-6831-8b108816a679"
+    server_ip: "http://10.96.245.10:8200"

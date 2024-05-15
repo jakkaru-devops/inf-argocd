@@ -1,0 +1,46 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: api-dr
+spec:
+  host: "{{ .Values.api.name }}-clusterip"
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: "ipi-vs"
+spec:
+  gateways:
+  - app-gateway
+  hosts:
+  - "*"
+  http:
+  - match:
+      - uri:
+          prefix: /api
+      - uri:
+          prefix: /api/v2
+    route:
+    - destination:
+        host: "{{ .Values.api.name }}-clusterip"
+        subset: v1
+        port:
+          number: {{ .Values.api.port }}
+      weight: 50
+    - destination:
+        host: "{{ .Values.api.name }}-clusterip"
+        subset: v2
+        port:
+          number: {{ .Values.api.port }}
+      weight: 50
