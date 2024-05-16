@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: "{{ .Values.api.name }}-deployment-v2"
+  namespace: {{ .Values.namespace.istio }}
   labels:
     app: {{ .Values.api.name }}
     version: v2
@@ -18,7 +19,6 @@ spec:
         components: {{ .Values.api.components }}
         app: {{ .Values.api.name }}
         version: v2
-        sidecar.istio.io/inject: "false"
     spec:
       initContainers:
         - name: wait-container

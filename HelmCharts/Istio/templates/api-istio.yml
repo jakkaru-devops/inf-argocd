@@ -2,6 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: api-dr
+  namespace: {{ .Values.namespace.istio }}
 spec:
   host: "{{ .Values.api.name }}-clusterip"
   trafficPolicy:
@@ -20,6 +21,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: "ipi-vs"
+  namespace: {{ .Values.namespace.istio }}
 spec:
   gateways:
   - app-gateway

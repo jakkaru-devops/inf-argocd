@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: pgrestore
+  namespace: {{ .Values.namespace.istio }}
 spec:
   template:
     spec:
