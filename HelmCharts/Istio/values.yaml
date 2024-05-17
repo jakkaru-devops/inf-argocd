@@ -102,12 +102,12 @@ database:
   password: postgres
 
 vault:
-  secret_id_app: "ef53792c-b040-d1a7-ce39-1f778bd9a135"
-  secret_id_api: "d53d52fc-c53f-0d8f-9850-ecceeadf8c97"
-  secret_id_postgres: "9c06c6df-7d5a-6d8a-9eaf-72f936af806d"
-  secret_id_s3: "944515c5-9c30-e276-63e4-72dfcc31dcbc"
-  all_role_id: "7169e64c-b0db-957d-5fe7-79fce162f194"
-  server_ip: "http://10.96.151.87:8200"
+  secret_id_app: "fafef332-a203-f125-4982-021dd9ef6aef"
+  secret_id_api: "01d92c1f-1a16-41b2-0917-53fe5d860cb9"
+  secret_id_postgres: "65a33be7-6c32-ba2a-2b87-6c1ef5c33582"
+  secret_id_s3: "484ecc83-6cc8-ce0d-dff3-5ba112775a8a"
+  all_role_id: "64c739b4-33ac-44a1-e3ca-3d79270b90ee"
+  server_ip: "http://10.96.201.52:8200"
 
 namespace:
   istio: "inf-application-istio"
