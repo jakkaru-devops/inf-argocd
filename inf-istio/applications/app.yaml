@@ -9,8 +9,6 @@ spec:
   destination:
     name     : in-cluster
     namespace: inf-application-istio
-    labels:
-      istio-injection: enabled
   source:
     repoURL: git@github.com:jakkaru-devops/inf-argocd.git
     path   : HelmCharts/Istio
@@ -20,6 +18,9 @@ spec:
     automated:
       prune   : true
       selfHeal: true
+    managedNamespaceMetadata:
+      labels: 
+        istio-injection: enabled
     syncOptions:
       - CreateNamespace=true
     
