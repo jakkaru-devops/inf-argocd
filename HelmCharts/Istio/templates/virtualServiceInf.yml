@@ -1,0 +1,45 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: "inf-all-vs"
+  namespace: {{ .Values.namespace.istio }}
+spec:
+  gateways:
+  - app-gateway
+  hosts:
+  - infinitum.test
+  http:
+  - match:
+    - uri:
+        prefix: /api
+    - uri:
+        prefix: /api/v2
+    route:
+    - destination:
+        host: "{{ .Values.api.name }}-clusterip"
+        subset: v1
+        port:
+          number: {{ .Values.api.port }}
+      weight: 50
+    - destination:
+        host: "{{ .Values.api.name }}-clusterip"
+        subset: v2
+        port:
+          number: {{ .Values.api.port }}
+      weight: 50
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: "{{ .Values.app.name }}-clusterip"
+        subset: v1
+        port:
+          number: {{ .Values.app.port }}
+      weight: 50
+    - destination:
+        host: "{{ .Values.app.name }}-clusterip"
+        subset: v2
+        port:
+          number: {{ .Values.app.port }}
+      weight: 50
