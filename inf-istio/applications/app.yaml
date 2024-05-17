@@ -1,3 +1,34 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name     : fullstack-short-service
+#   namespace: argocd
+#   finalizers:
+#   - resources-finalizer.argocd.argoproj.io
+# spec:
+#   destination:
+#     name     : in-cluster
+#     namespace: inf-application-istio
+#   source:
+#     repoURL: git@github.com:jakkaru-devops/inf-argocd.git
+#     path   : HelmCharts/Istio
+#     targetRevision: HEAD
+#   project: default
+#   syncPolicy:
+#     automated:
+#       prune   : true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
+#     managedNamespaceMetadata: # Sets the metadata for the application namespace. Only valid if CreateNamespace=true (see above), otherwise it's a no-op.
+#       labels: # The labels to set on the application namespace
+#         any: label
+#         you: like
+#       annotations: # The annotations to set on the application namespace
+#         the: same
+#         applies: for
+#         annotations: on-the-namespace
+
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -16,18 +47,26 @@ spec:
   project: default
   syncPolicy:
     automated:
-      prune   : true
+      prune: true
       selfHeal: true
+      allowEmpty: false
     syncOptions:
-      - CreateNamespace=true
-    managedNamespaceMetadata: # Sets the metadata for the application namespace. Only valid if CreateNamespace=true (see above), otherwise it's a no-op.
-      labels: # The labels to set on the application namespace
-        any: label
-        you: like
-      annotations: # The annotations to set on the application namespace
-        the: same
-        applies: for
-        annotations: on-the-namespace
+    - CreateNamespace=true
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
+    managedNamespaceMetadata:
+      labels:
+        istio-injection: enabled
+    retry:
+      limit: 5
+      backoff:
+        duration: 10s
+        factor: 2
+        maxDuration: 3m
+
+
+    
+
 
     
 
