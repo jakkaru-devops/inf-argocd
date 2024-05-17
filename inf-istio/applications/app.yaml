@@ -18,10 +18,15 @@ spec:
     automated:
       prune   : true
       selfHeal: true
-    managedNamespaceMetadata:
-      labels: 
-        istio-injection: enabled
     syncOptions:
       - CreateNamespace=true
+      - ManagedNamespaceLabel=my-label
+      - ManagedNamespaceAnnotation=my-annotation
+    managedNamespaceMetadata:
+      labels:
+        istio-injection: enabled
+        my-custom-label: example
+      annotations:
+        my-custom-annotation: example
     
 
