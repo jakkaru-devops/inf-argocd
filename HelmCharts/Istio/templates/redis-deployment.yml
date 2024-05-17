@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         components: {{ .Values.redis.components }}
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
         - name: {{ .Values.redis.name }}

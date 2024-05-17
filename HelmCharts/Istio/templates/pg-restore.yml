@@ -5,6 +5,10 @@ metadata:
   namespace: {{ .Values.namespace.istio }}
 spec:
   template:
+    metadata:
+        labels:
+          app: {{ .Values.pgrestore.name }}
+          sidecar.istio.io/inject: "false"
     spec:
       initContainers:
         - name: wait-container

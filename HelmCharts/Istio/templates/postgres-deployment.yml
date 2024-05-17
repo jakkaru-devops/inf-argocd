@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         components: {{ .Values.postgres.components }}
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
         - name: {{ .Values.postgres.name }}
