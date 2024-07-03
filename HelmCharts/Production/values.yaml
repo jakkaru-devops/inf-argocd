@@ -45,7 +45,7 @@ app:
 api:
   name: inf-api
   image: cr.yandex/crpn9ikb6hp5v19o9957/inf-backend-dev
-  version: 6ade93
+  version: "1"
   components: backend
   port: 2348
   replicas: 1
@@ -94,7 +94,6 @@ database:
   db: inf
   user: postgres
   password: postgres
-
 vault:
   secret_id_postgres: "8b58dd8f-1d85-484c-83ba-3be9d350c6ba"
   secret_id_api: "0e366029-4f26-52ef-f57b-46061ee376f2"
