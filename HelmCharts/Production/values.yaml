@@ -29,7 +29,7 @@ pgrestore:
 app:
   name: inf-app
   image: cr.yandex/crpn9ikb6hp5v19o9957/inf-frontend-dev
-  version: "25"
+  version: "6"
   components: frontend
   port: 3000
   replicas: 1
@@ -45,7 +45,7 @@ app:
 api:
   name: inf-api
   image: cr.yandex/crpn9ikb6hp5v19o9957/inf-backend-dev
-  version: "17"
+  version: "7"
   components: backend
   port: 2348
   replicas: 1
@@ -95,9 +95,9 @@ database:
   user: postgres
   password: postgres
 vault:
-  secret_id_postgres: "8b58dd8f-1d85-484c-83ba-3be9d350c6ba"
-  secret_id_api: "0e366029-4f26-52ef-f57b-46061ee376f2"
-  secret_id_app: "06f60f30-e57d-c1cb-52a6-6801a1d40a54"
-  secret_id_s3: "5e59a09a-df21-190b-5de0-f76c681b2297"
-  all_role_id: "900f481e-180e-7892-53ad-226beb81a0e1"
-  server_ip: "http://10.96.201.249:8200"
+  secret_id_app: "13f4b2fb-9dd8-0938-adec-35b7f31ff25a"
+  secret_id_api: "8b2f3d1f-d5ab-5ddb-2d66-521c63593544"
+  secret_id_postgres: "772e0968-1829-87a6-cc61-baca8d472bd6"
+  secret_id_s3: "bf1d0c91-b6e1-06e6-6d96-574957f97074"
+  all_role_id: "4288f0ba-d77f-c280-8bae-20e3dc837b99"
+  server_ip: "http://10.96.187.248:8200"
