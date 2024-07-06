@@ -19,7 +19,7 @@ spec:
       initContainers:
         - name: wait-container
           image: busybox
-          command: ["sleep", "100"]  # Эта команда позволяет контейнеру ожидать 300 секунд (5 минут)
+          command: ["sleep", "250"]  # Эта команда позволяет контейнеру ожидать 300 секунд (5 минут)
       containers:
         - name: {{ .Values.api.name }}
           image: "{{ .Values.api.image }}:{{ .Values.api.version }}"
