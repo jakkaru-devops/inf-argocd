@@ -29,7 +29,7 @@ pgrestore:
 app:
   name: inf-app
   image: cr.yandex/crpn9ikb6hp5v19o9957/inf-frontend-dev
-  version: "35"
+  version: "104"
   components: frontend
   port: 3000
   replicas: 1
@@ -42,6 +42,7 @@ app:
   envs:
     - EXTERNAL_CATALOG_SERVER_URL
     - API_SERVER_URL
+    
 api:
   name: inf-api
   image: cr.yandex/crpn9ikb6hp5v19o9957/inf-backend-dev
@@ -60,6 +61,7 @@ api:
     - DB_PORT
     - DB_HOST
     - REDIS_URL
+
 postgres:
   name: postgres
   image: postgres
@@ -68,15 +70,16 @@ postgres:
   components: postgres
   port: 5432
   requests:
-    cpu: "1000m"
-    memory: "2000Mi"
+    cpu: "500m"
+    memory: "1000Mi"
   limits:
-    cpu: "1000m"
-    memory: "2000Mi"
+    cpu: "500m"
+    memory: "1000Mi"
   envs:
     - POSTGRES_DB
     - POSTGRES_USER
     - POSTGRES_PASSWORD
+
 redis:
   name: redis
   image: redis
@@ -90,14 +93,16 @@ redis:
   limits:
     cpu: "200m"
     memory: "250Mi"
+
 database:
   db: inf
   user: postgres
   password: postgres
+
 vault:
-  secret_id_app: "13f4b2fb-9dd8-0938-adec-35b7f31ff25a"
-  secret_id_api: "8b2f3d1f-d5ab-5ddb-2d66-521c63593544"
-  secret_id_postgres: "772e0968-1829-87a6-cc61-baca8d472bd6"
-  secret_id_s3: "bf1d0c91-b6e1-06e6-6d96-574957f97074"
-  all_role_id: "4288f0ba-d77f-c280-8bae-20e3dc837b99"
+  secret_id_app: "20493765-71dd-bad7-8395-c0d3b0b51c29"
+  secret_id_api: "b864eb1f-6f7d-56fd-a667-4ea2716ebbeb"
+  secret_id_postgres: "6d15b35e-e520-cd48-d620-aabac9872205"
+  secret_id_s3: "8afe3378-8702-e863-24ed-1ff70daf7171"
+  all_role_id: "5cc02ea6-a3aa-6051-827f-cfe633fff5fa"
   server_ip: "http://10.96.187.248:8200"
