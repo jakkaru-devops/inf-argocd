@@ -105,4 +105,4 @@ vault:
   secret_id_postgres: "6d15b35e-e520-cd48-d620-aabac9872205"
   secret_id_s3: "8afe3378-8702-e863-24ed-1ff70daf7171"
   all_role_id: "5cc02ea6-a3aa-6051-827f-cfe633fff5fa"
-  server_ip: "http://10.96.187.248:8200"
+  server_ip: "http://10.96.229.202:8200"
